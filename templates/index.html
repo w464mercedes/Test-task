@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test task</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container w-50 mt-5 bg-light-subtle border shadow-lg border-secondary rounded">
+      <form id="Form" method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Оберіть файл txt з цілими числами для перевірки даних</label>
+            <input class="form-control" type="file" name="file">
+            <button class="mt-2 rounded" type="submit">Перевірити</button>
+            {% for msg in get_flashed_messages() %}
+            <div class="flash mb-3">{{msg}}</div>
+            {% endfor %}
+          </div>
+      </form>
+      {% if max %}
+        <p>аксимальне число в файлі :{{max}}</p>
+        <p>мінімальне число в файлі :{{min}}</p>
+        <p>медіана :{{median}}</p>
+        <p>середнє арифметичне значення :{{average}}</p>
+        <p>найбільша послідовність чисел яка збільшується :{{lon_up}}</p>
+        <p>найбільша послідовність чисел яка зменшується :{{lon_down}}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
